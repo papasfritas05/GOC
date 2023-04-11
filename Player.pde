@@ -7,6 +7,7 @@ class Player extends Sprite {
         super(x, y, 40, 40); // in this case, Sprite
         team = 1;
     }
+
     @Override
     void update() {
         float speed = 1.2;
@@ -18,6 +19,17 @@ class Player extends Sprite {
         pos.add(vel);
         // always try to decelerate
         vel.mult(0.9);
+    }
+
+    @Override
+    void display() {
+        fill(200, 0, 200);
+        ellipse(pos.x, pos.y, size.x, size.y);
+    }
+
+    @Override
+    void handleCollision() {
+        // don't die.
     }
     void keyUp() {
         switch(key) { // key is a global value
