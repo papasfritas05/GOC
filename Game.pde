@@ -1,20 +1,20 @@
-
-// don't initialize here...
-Sprite s;
-
-
-// this function runs one time at the beginning
-// think... pre-code
+SpriteManager _SM;
 
 void setup() {
-    size(800, 600); // window size, 800 wide, 600 tall
-    s = new Sprite(width/2, height/2, 50, 50);
+    size(1024, 768);
+    _SM = new SpriteManager();
+    _SM.spawn(new Invader(250, 50));
 }
 
-// always runs, at the speed of the frame rate
-// think... FPS
-
 void draw() {
-    s.update();
-    s.display();
+    background(0);
+    _SM.manage();
+}
+
+void keyPressed() {
+    _SM.player.keyDown();
+}
+
+void keyReleased() {
+    _SM.player.keyUp();
 }
