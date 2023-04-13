@@ -38,28 +38,36 @@ class Player extends Sprite {
     void handleCollision() {
         // don't die.
     }
+
     void keyUp() {
         switch(key) { // key is a global value
             case 'a':
-            case 'A' : left = false; break;
+            case 'A': left = false; break;
             case 's':
-            case 'S' : down = false; break;
+            case 'S': down = false; break;
             case 'd':
-            case 'D' : right = false; break;
+            case 'D': right = false; break;
             case 'w':
-            case 'W' : up = false; break;
+            case 'W': up = false; break;
         }
     }
     void keyDown() {
         switch(key) { // key is a global value
             case 'a':
-            case 'A' : left = true; break;
+            case 'A': left = true; break;
             case 's':
-            case 'S' : down = true; break;
+            case 'S': down = true; break;
             case 'd':
-            case 'D' : right = true; break;
+            case 'D': right = true; break;
             case 'w':
-            case 'W' : up = true; break;
+            case 'W': up = true; break;
+            case ' ':
+            case 'f': fire(); break;
         }
+    }
+
+    void fire() {
+        PVector aim = new PVector(0, -10); // up
+        _SM.spawn(new Bullet(pos.x, pos.y, aim, team));
     }
 }
