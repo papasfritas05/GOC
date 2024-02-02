@@ -1,5 +1,6 @@
 class Player extends Sprite {
     boolean left, right, up, down;
+    int Health = 3;
     
     Player(float x, float y) {
         // super refers to the parent
@@ -30,13 +31,8 @@ class Player extends Sprite {
 
     @Override
     void display() {
-        fill(200, 0, 200);
+        fill(7, 76, 214);
         ellipse(pos.x, pos.y, size.x, size.y);
-    }
-
-    @Override
-    void handleCollision() {
-        // don't die.
     }
 
     void keyUp() {
@@ -69,5 +65,13 @@ class Player extends Sprite {
     void fire() {
         PVector aim = new PVector(0, -10); // up
         _SM.spawn(new Bullet(pos.x, pos.y, aim, team));
+    }
+   
+    void handleCollision(){
+        Health -= 1;
+        if(Health <= 0){
+            _SM.destroy(this);
+        }
+        exit();
     }
 }
