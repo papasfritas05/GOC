@@ -19,7 +19,7 @@ class BigBoy extends Sprite {
         pos.add(vel); 
         super.update();
         PVector aim = new PVector(_SM.player.pos.x - this.pos.x, _SM.player.pos.y - this.pos.y);
-        aim = aim.normalize().mult(20); // turn this into a single unit vector, then increase its magnitude
+        aim = aim.normalize().mult(20); 
         if (pos.x < 0 || pos.x > width) {
             vel.x *= -1;
 

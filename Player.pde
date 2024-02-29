@@ -3,8 +3,6 @@ class Player extends Sprite {
     int Health = 3;
     
     Player(float x, float y) {
-        // super refers to the parent
-        // ... I use it here as a constructor
         super(x, y, 40, 40); // in this case, Sprite
         team = 1;
     }

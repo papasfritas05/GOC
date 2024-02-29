@@ -1,6 +1,7 @@
 class Shooter extends Invader {
     int Health = 2;
-    long mark, wait = 1200; // ms
+    long mark, wait = 1200; 
+    int teleportCount = 0;
 
     Shooter(float x, float y) {
         super(x, y);
@@ -16,7 +17,7 @@ class Shooter extends Invader {
     void update() {
         super.update();
         PVector aim = new PVector(_SM.player.pos.x - this.pos.x, _SM.player.pos.y - this.pos.y);
-        aim = aim.normalize().mult(8); // turn this into a single unit vector, then increase its magnitude
+        aim = aim.normalize().mult(8); 
 
         if(millis() - mark > wait) {
             mark = millis();
@@ -29,4 +30,14 @@ class Shooter extends Invader {
             _SM.destroy(this);
         }
     }
+    int countOnScreenBullets(ArrayList<Bullet> bullets) {
+    int count = 0;
+
+    for (Bullet bullet : bullets) {
+      if (bullet.pos.x >= 0 && bullet.pos.x <= width && bullet.pos.y >= 0 && bullet.pos.y <= height) {
+        count++;
+      }
+    }
+    return count;
+  }
 }
